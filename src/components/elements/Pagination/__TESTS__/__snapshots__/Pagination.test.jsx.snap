@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a pagination component 1`] = `
+<div
+  className="mt-4 ml-4"
+>
+  <span
+    className="block w-full text-center md:inline md:w-auto md:text-left"
+  >
+    Page 
+    1
+     of 
+    3
+  </span>
+  <button
+    className="px-4 ml-4 bg-white rounded"
+    onClick={[Function]}
+  >
+    Previous Page
+  </button>
+  <button
+    className="px-4 ml-4 bg-white rounded"
+    onClick={[Function]}
+  >
+    Next Page
+  </button>
+</div>
+`;

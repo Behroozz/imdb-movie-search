@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import getItems from '../../../api/getItems'
 
-const Pagination = ({ page, totalPages, term, dispatch }) => {
-  console.log(page)
+export const Pagination = ({ page, totalPages, term, dispatch }) => {
   const nextPage = () => {
     if (page < totalPages) {
       getItems(term, page+= 1, dispatch)
