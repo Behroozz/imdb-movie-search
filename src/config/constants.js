@@ -1,0 +1,7 @@
+const DATA_FETCH = {
+  SUCCESS: 'SUCCESS',
+  LOADING: 'LOADING',
+  FAILURE: 'FAILURE',
+}
+
+export { DATA_FETCH }
