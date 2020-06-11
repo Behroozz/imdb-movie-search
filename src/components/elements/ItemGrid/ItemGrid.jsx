@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import ItemTile from '../ItemTile/ItemTile.jsx'
 
 
-const ItemGrid = ({ items, term }) => {
+export const ItemGrid = ({ items, term }) => {
   console.log(items)
   return (
     <React.Fragment>

@@ -1,6 +1,6 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import ItemGrid from '../ItemGrid.jsx'
+import React from 'react'
+import renderer from 'react-test-renderer'
+import { ItemGrid } from '../ItemGrid.jsx'
 
 const dataMock = [
   {
@@ -20,21 +20,8 @@ const dataMock = [
 
 test('should render a grid of 9 items', () => {
   const component = renderer.create(
-    <ItemGrid item={dataMock} />
+    <ItemGrid items={dataMock} />
   )
   let tree = component.toJSON()
-  console.log(tree.length)
   expect(tree).toMatchSnapshot()
-
-  // // manually trigger the callback
-  // tree.props.onMouseEnter();
-  // // re-rendering
-  // tree = component.toJSON();
-  // expect(tree).toMatchSnapshot();
-
-  // // manually trigger the callback
-  // tree.props.onMouseLeave();
-  // // re-rendering
-  // tree = component.toJSON();
-  // expect(tree).toMatchSnapshot();
 })
