@@ -7,4 +7,4 @@ Simple React app for searching movie titles on IMDB
 * run 'npm run start'
 
 
-### Enter a fragment of the movie you are searching for and click 'Get Results'
+### Enter a fragment of the movie title you are searching for and click 'Get Results'
