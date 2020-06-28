@@ -1,16 +1,32 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import getItems from '../../../api/getItems'
+import React, { useContext, useState, useEffect } from 'react'
 
-export const Pagination = ({ page, totalPages, term, dispatch }) => {
+import getItems from '../../../api/getItems'
+import { DataContext } from '../../../context/DataContext.jsx'
+
+export const Pagination = () => {
+  
+  const { data:dataContext, term:termContext } = useContext(DataContext)
+  const [data, setData] = dataContext
+  const [page, setPage] = useState(1)
+  const [term] = termContext
+  let totalPages = 1
+  
+  useEffect(()=> {
+    getItems(term, page, setData)
+  }, [page])
+  
+  if (data.total_pages) {
+    totalPages = data.total_pages
+  }
+
   const nextPage = () => {
     if (page < totalPages) {
-      getItems(term, page+= 1, dispatch)
+      setPage(page + 1)
     }
   }
   const prevPage = () => {
     if (page > 1) {
-      getItems(term, page-= 1, dispatch)
+      setPage(page - 1)
     }
   }
   return (
@@ -26,12 +42,4 @@ export const Pagination = ({ page, totalPages, term, dispatch }) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    page: parseInt(state.data.page),
-    totalPages: state.data.total_pages,
-    term: state.term
-  }
-}
-
-export default React.memo(connect(mapStateToProps)(Pagination))
+export default React.memo(Pagination)

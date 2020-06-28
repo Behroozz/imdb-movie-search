@@ -1,15 +1,19 @@
-import React, { useRef } from 'react'
-import { connect } from 'react-redux'
+import React, { useRef, useContext } from 'react'
 
+import { DataContext } from '../../../context/DataContext.jsx'
 import Pagination from '../Pagination/Pagination.jsx'
 import getItems from '../../../api/getItems'
 
-const Header = ({ dispatch  }) => {
+const Header = () => {
+  const { term:contextTerm, data:contextData } = useContext(DataContext)
+  const [stateTerm, setTerm] = contextTerm
+  const [data, setData] = contextData
   const inputRef = useRef(null)
   const callApi = (e) => {
     e.preventDefault()
     const term = inputRef.current.value
-    getItems(term, 1, dispatch)
+    setTerm(term)
+    getItems(term, 1, setData)
   }
   return (
     <div className="bg-gray-400 flex flex-wrap flex-row p-4 w-full items-center">
@@ -23,4 +27,4 @@ const Header = ({ dispatch  }) => {
   )
 }
 
-export default React.memo(connect()(Header))
+export default Header

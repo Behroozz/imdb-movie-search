@@ -1,12 +1,13 @@
-import React from 'react'
-import { get } from 'lodash'
-import { connect } from 'react-redux'
+import React, { useContext } from 'react'
 
+import { DataContext } from '../../../context/DataContext.jsx'
 import ItemTile from '../ItemTile/ItemTile.jsx'
 
-
-export const ItemGrid = ({ items, term }) => {
-  console.log(items)
+export const ItemGrid = () => {
+  const { data:contextData, term:contextTerm } = useContext(DataContext)
+  const [data] = contextData
+  const [term] = contextTerm
+  const items = data.data || []
   return (
     <React.Fragment>
       {term && <h2 className="ml-4 mt-4">Results for {term}</h2>}
@@ -23,11 +24,4 @@ export const ItemGrid = ({ items, term }) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.data.data,
-    term: state.term
-  }
-}
-
-export default React.memo(connect(mapStateToProps)(ItemGrid))
+export default React.memo(ItemGrid)

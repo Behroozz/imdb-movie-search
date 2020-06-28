@@ -1,14 +1,13 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import Container from './components/layout/Container.jsx'
 
-import store from './state/store'
+import { DataContextProvider } from './context/DataContext.jsx'
+import Container from './components/layout/Container.jsx'
 
 const App = () => {
   return (
-    <Provider store={store}>
+    <DataContextProvider>
       <Container/>
-    </Provider>
+    </DataContextProvider>
   )
 }
 
